@@ -1,6 +1,4 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify
-from huelight import *
-from blindControl import *
 app = Flask(__name__)
 
 
