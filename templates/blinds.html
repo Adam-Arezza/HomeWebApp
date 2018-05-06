@@ -1,0 +1,45 @@
+{% extends "home.html" %}
+{% block content %}
+
+<div class="mainSpace container-fluid">
+  <div class="row">
+    <div class="blindSection col-sm">
+      <h4>Bedroom</h4>
+      <p class="blindstate"><strong>Current State:</strong></p>
+      <button class="controlButton" onclick="blindControl('bedroom','open')">Open</button>
+      <button class="controlButton" onclick="blindControl('bedroom','close')">Close</button>
+    </div>
+    <div class="blindSection col-sm">
+      <h4>Living Room</h4>
+      <p class="blindstate"><strong>Current State:</strong></p>
+      <span id="livingBlind"></span>
+      <button class="controlButton" onclick="blindControl('living','open')">Open</button>
+      <button class="controlButton" onclick="blindControl('living','close')">Close</button>
+    </div>
+    <div class="blindSection col-sm">
+      <h4>Kitchen</h4>
+      <p class="blindstate"><strong>Current State:</strong></p>
+      <span id="kitchenBlind"></span>
+      <button class="controlButton" onclick="blindControl('kitchen','open')">Open</button>
+      <button class="controlButton" onclick="blindControl('kitchen','close')">Close</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+   $(document).ready(function () {
+    $(".blinds").css("border", "solid 1px black")
+  });
+
+function blindControl(location, state){
+  var blindState = new FormData();
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/blinds/", true);
+  blindState.append('blinds',[location,state]);
+  xhttp.send(blindState);
+}
+
+</script>
+
+{% endblock %}

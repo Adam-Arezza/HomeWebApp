@@ -1,0 +1,27 @@
+.nav-link{
+    color:black;
+}
+.nav-link:hover{
+    background-color: midnightblue;
+    color:white;
+}
+.navbar{
+    font-size:20px;
+}
+.mainSpace{
+    background-color: rgb(126, 139, 141);
+    padding: 40px 20px;
+}
+.controlButton{
+    background-color: midnightblue;
+    color:white;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    margin:5px;
+}
+.blindSection{
+    padding: 20px;
+}
+
+
