@@ -1,45 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../static/main.css">
-</head>
-<body>
+{%extends "index.html"%}
 
-  <!--Navigation bar for different app functions -->
-  <div class="container">
-    <h2 style="text-align: center; padding:50px">Controls and Monitoring</h2>
-  </div>
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="navbar navbar-expand-lg">
-        <ul class="navbar-nav collapse navbar-collapse">
-          <li class="home nav-item">
-            <a class="nav-link" href="{{url_for('home')}}">home</a>
-          </li>
-          <li class="lights nav-item">
-            <a class="nav-link" href="{{url_for('lights')}}">Lights</a>
-          </li>
-          <li class="blinds nav-item">
-            <a class="nav-link" href="{{url_for('blinds')}}">Blinds</a>
-          </li>
-          <li class="security nav-item">
-            <a class="nav-link" href="{{url_for('security')}}">Security</a>
-          </li>
-      </div>
-    </div>
-  </div>
-  <!--Navigation bar for different app functions -->
-
-{% block content %}
-
-{% endblock %}
+{%block content%}
 
 
-</body>
 
-</html>
+
+
+
+{%endblock%}

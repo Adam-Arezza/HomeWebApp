@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../static/main.css">
+</head>
+
+<body>
+
+  <!--Navigation bar for different app functions -->
+<div class="navigation">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('home')}}">HOME</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('lights')}}">LIGHTS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('blinds')}}">BLINDS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('security')}}">SECURITY</a>
+    </li>
+  </ul>
+</div>
+      
+  <!--Navigation bar for different app functions -->
+
+{% block content %}
+
+{% endblock %}
+
+
+</body>
+
+</html>

@@ -1,82 +1,36 @@
-{% extends "home.html" %}
+{% extends "index.html" %}
 {% block content %}
 
 <!--Light controls-->
-<div class="mainSpace container-fluid">
-  <div class="row">
-    <div class="col">
-      <h4>Office</h4>
+<div class="container-fluid" style="padding-top:40px;">
+  <div class="row justify-content-center">
+    <div class="col-sm-6" style="text-align: center;">
+      <h2>Office</h2>
       <p class="state">
-        <strong>Current state:</strong>
-        <span id="Olight">{{state}}</span>
+        <strong>Currently:</strong>
+        <span id="Officelights"></span>
       </p>
-      <button class="controlButton rounded" onclick="lightSwitch('office',true)">ON</button>
-      <button class="controlButton rounded" onclick="lightSwitch('office',false)">OFF</button>
+      <button class="officeToggle rounded">Light Toggle</button>
       <div class="slider">
-        <input type="range" min="0" max="255" value="255" class="slider" id="myRange" onclick="lightdim('office')">
+        <input type="range" min="0" max="255" value="255" id="officeDim" onchange="lightdim('office', 'officeDim')">
       </div>
     </div>
-    <div class="col">
+    <div class="col-sm-6" style="text-align: center">
       <div class="bedlight">
-        <h4>Bedroom</h4>
+        <h2>Bedroom</h2>
         <p class="state">
-          <strong>Current state:</strong>
+          <strong>Currently:</strong>
+          <span id="bedroomlights"></span>
         </p>
-        <button class="controlButton rounded" onclick="lightSwitch('bedroom',true)">ON</button>
-        <button class="controlButton rounded" onclick="lightSwitch('bedroom',false)">OFF</button>
+        <button class="bedroomToggle rounded">Light Toggle</button>
         <div class="slider">
-          <input type="range" min="0" max="255" value="255" class="slider" id="myRange" onclick="lightdim('bedroom')">
+          <input type="range" min="0" max="255" value="255" id="bedroomDim" onchange="lightdim('bedroom', 'bedroomDim')">
         </div>
       </div>
     </div>
   </div>
 </div>
 <!--Light controls-->
-
-<script>
-//Highlights background of lights tab when lights page loaded
-  $(document).ready(function () {
-    $(".lights").css("border", "solid 1px black")
-  });
-
-//Light On/Off control
-  var hueEndpoints = {
-    office: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/1/action",
-    bedroom: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/2/action"
-  };
-
-  function lightSwitch(location, state) {
-      var url = hueEndpoints[location];
-      console.log(url)
-      //var lightState = new FormData();
-      var lightChange = { "on": state }
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("PUT", url, true)
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-        }
-      }
-      //lightState.append('location', location)
-      //lightState.append('state', state)
-      //console.log("Turning the " + location + " lights " + state)
-      xhttp.send(JSON.stringify(lightChange))
-    }
-
-  //Light dimmer function
-    function lightdim(location) {
-      var dimSet = document.getElementById("myRange").value;
-      var xhttp = new XMLHttpRequest();
-      var url = hueEndpoints[location];
-      var dimVal = parseInt(dimSet)
-      var lightDimmer = {"bri":dimVal}
-      xhttp.open("PUT", url, true);
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-        };
-      };
-      
-      xhttp.send(JSON.stringify(lightDimmer));
-    }
-</script>
+<script src="../static/scripts/hueLightControl.js"></script>
 
 {% endblock %}
