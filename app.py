@@ -1,11 +1,14 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify
 app = Flask(__name__)
 
+from nodes import *
+
+devices = ["lights", "blinds"]
 
 @app.route('/')
 @app.route('/home/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', devices=devices)
 
 
 @app.route('/lights/', methods=['GET', 'POST'])
@@ -15,9 +18,6 @@ def lights():
 
 @app.route('/blinds/', methods=['GET', 'POST'])
 def blinds():
-    if request.method == "POST":
-        a = request.form['blinds']
-        command(a)
     return render_template('blinds.html')
 
 

@@ -1,7 +1,10 @@
 //url for each hue light group in the house
 var hueEndpoints = {
     office: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/1/",
-    bedroom: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/2/"
+    bedroom: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/2/",
+    wardrobe:"http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/3/",
+    livingRoom:"http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/4/",
+    FrontDoor:"http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/5/"
 };
 $(document).ready(function () {
     var intervalId = setInterval(function () {
