@@ -8,23 +8,23 @@ nodes = [[0x01, 0x01, 0x01, 0x01, 0xE0],[0x01, 0x01, 0x01, 0x01, 0xE1]]
 
 radio = NRF24(GPIO, spidev.SpiDev())
 radio.begin(0, 17)
-radio.setPayloadSize(32)
+#radio.setPayloadSize(32)
 radio.setChannel(0x60)
 
 radio.setDataRate(NRF24.BR_1MBPS)
 radio.setPALevel(NRF24.PA_MIN)
-
+radio.enableDynamicPayloads()
 radio.openReadingPipe(1, nodes[0])
-radio.openWritingPipe(nodes[1])
+#radio.openWritingPipe(nodes[1])
 
 radio.startListening()
 
-if radio.available():
-    message = []
-    radio.read(message, radio.getDynamicPayloadSize())
-    print (message)
-
-
+while True:
+        time.sleep(0.5)	
+        message = []
+        radio.read(message, radio.getDynamicPayloadSize())
+        print (message)
+	
 
 
 
