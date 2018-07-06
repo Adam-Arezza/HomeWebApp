@@ -1,19 +1,23 @@
 //url for each hue light group in the house
 var hueEndpoints = {
-    office: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/1/",
-    bedroom: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/2/",
-    wardrobe:"http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/3/",
+    Office: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/1/",
+    Bedroom: "http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/2/",
+    wardrobeRoom:"http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/3/",
     livingRoom:"http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/4/",
     FrontDoor:"http://192.168.0.3/api/zjMUMakQKZlX-TXwiYioPBF7QBfDvHCMcHzhIxmx/groups/5/"
 };
+
 $(document).ready(function () {
+
     var intervalId = setInterval(function () {
-        makeGetRequest(hueEndpoints.office,
+
+        //Updates UI with current state of the specified endpoint
+        makeGetRequest(hueEndpoints.Office,
             function (response) {
                 // response
                 if (response.state.all_on) {
                     document.getElementById("Officelights").innerHTML = "ON"
-                    document.getElementById("officeDim").value = response.action.bri
+                    document.getElementById("OfficeDim").value = response.action.bri
                 }
                 else if (!response.state.all_on) {
                     document.getElementById("Officelights").innerHTML = "OFF"
@@ -21,41 +25,120 @@ $(document).ready(function () {
             }, function (error) {
                 // error
             });
-        makeGetRequest(hueEndpoints.bedroom,
+
+        //Updates UI with current state of the specified endpoint
+        makeGetRequest(hueEndpoints.Bedroom,
             function (response) {
                 // response
                 if (response.state.all_on) {
-                    document.getElementById("bedroomlights").innerHTML = "ON"
-                    document.getElementById("bedroomDim").value = response.action.bri
+                    document.getElementById("Bedroomlights").innerHTML = "ON"
+                    document.getElementById("BedroomDim").value = response.action.bri
                 }
                 else if (!response.state.all_on) {
-                    document.getElementById("bedroomlights").innerHTML = "OFF"
+                    document.getElementById("Bedroomlights").innerHTML = "OFF"
                 }
             }, function (error) {
                 // error
             });
 
+        //Updates UI with current state of the specified endpoint
+        makeGetRequest(hueEndpoints.wardrobeRoom,
+            function (response) {
+                // response
+                if (response.state.all_on) {
+                    document.getElementById("wardrobeRoomlights").innerHTML = "ON"
+                    document.getElementById("wardrobeRoomDim").value = response.action.bri
+                }
+                else if (!response.state.all_on) {
+                    document.getElementById("wardrobeRoomlights").innerHTML = "OFF"
+                }
+            }, function (error) {
+                // error
+            });
+
+        //Updates UI with current state of the specified endpoint
+        makeGetRequest(hueEndpoints.livingRoom,
+            function (response) {
+                // response
+                if (response.state.all_on) {
+                    document.getElementById("livingRoomlights").innerHTML = "ON"
+                    document.getElementById("livingRoomDim").value = response.action.bri
+                }
+                else if (!response.state.all_on) {
+                    document.getElementById("livingRoomlights").innerHTML = "OFF"
+                }
+            }, function (error) {
+                // error
+            });
+
+        //Updates UI with current state of the specified endpoint
+        makeGetRequest(hueEndpoints.FrontDoor,
+            function (response) {
+                // response
+                if (response.state.all_on) {
+                    document.getElementById("FrontDoorlights").innerHTML = "ON"
+                    document.getElementById("FrontDoorDim").value = response.action.bri
+                }
+                else if (!response.state.all_on) {
+                    document.getElementById("FrontDoorlights").innerHTML = "OFF"
+                }
+            }, function (error) {
+                // error
+            });
     }, 3000);
 
-    $(".officeToggle").click(function () {
+    $(".OfficeToggle").click(function () {
         if ($("#Officelights")['0'].textContent == "ON") {
-            lightSwitch("office", false)
+            lightSwitch("Office", false)
             $("#Officelights")['0'].textContent = "OFF"
         }
         else if ($("#Officelights")['0'].textContent == "OFF") {
-            lightSwitch("office", true)
+            lightSwitch("Office", true)
             $("#Officelights")['0'].textContent = "ON"
         }
     });
 
-    $(".bedroomToggle").click(function () {
-        if ($("#bedroomlights")['0'].textContent == "ON") {
-            lightSwitch("bedroom", false)
-            $("#bedroomlights")['0'].textContent = "OFF"
+    $(".BedroomToggle").click(function () {
+        if ($("#Bedroomlights")['0'].textContent == "ON") {
+            lightSwitch("Bedroom", false)
+            $("#Bedroomlights")['0'].textContent = "OFF"
         }
-        else if ($("#bedroomlights")['0'].textContent == "OFF") {
-            lightSwitch("bedroom", true)
-            $("#bedroomlights")['0'].textContent = "ON"
+        else if ($("#Bedroomlights")['0'].textContent == "OFF") {
+            lightSwitch("Bedroom", true)
+            $("#Bedroomlights")['0'].textContent = "ON"
+        }
+    });
+
+    $(".wardrobeRoomToggle").click(function () {
+        if ($("#wardrobeRoomlights")['0'].textContent == "ON") {
+            lightSwitch("wardrobeRoom", false)
+            $("#wardrobeRoomlights")['0'].textContent = "OFF"
+        }
+        else if ($("#wardrobeRoomlights")['0'].textContent == "OFF") {
+            lightSwitch("wardrobeRoom", true)
+            $("#wardrobeRoomlights")['0'].textContent = "ON"
+        }
+    });
+    
+    $(".livingRoomToggle").click(function () {
+        if ($("#livingRoomlights")['0'].textContent == "ON") {
+            lightSwitch("livingRoom", false)
+            $("#livingRoomlights")['0'].textContent = "OFF"
+        }
+        else if ($("#livingRoomlights")['0'].textContent == "OFF") {
+            lightSwitch("livingRoom", true)
+            $("#livingRoomlights")['0'].textContent = "ON"
+        }
+    });
+    
+    $(".FrontDoorToggle").click(function () {
+        if ($("#FrontDoorlights")['0'].textContent == "ON") {
+            lightSwitch("FrontDoor", false)
+            $("#FrontDoorlights")['0'].textContent = "OFF"
+        }
+        else if ($("#FrontDoorlights")['0'].textContent == "OFF") {
+            lightSwitch("FrontDoor", true)
+            $("#FrontDoorlights")['0'].textContent = "ON"
         }
     });
 });
